@@ -6,15 +6,21 @@ public class Entity {
 	 * @param args
 	 */
 	private double[][] movemat=null;
-	private int[] factorials={1,1,2,6,24,120,720,5040};
-	public Entity(double[][] movemat) {
+	private double[] factorials=null;
+	public Entity(double[][] movemat, int precision) {
 		// TODO Auto-generated constructor stub
 		this.movemat=movemat;
+		factorials=new double[precision];
+		factorials[0]=1;
+		for (int i = 1; i < factorials.length; i++) {
+			factorials[i]=factorials[i-1]*i;
+		}
+		
 	}
 	public double[] get(int ind){
 		return movemat[ind];
 	}
-	public void update(int delt){
+	public void update(double delt){
 		for (int i = 0; i < movemat.length; i++) {
 			double[] arr=movemat[i];
 			for (int j = 0; j < arr.length; j++) {
@@ -22,8 +28,9 @@ public class Entity {
 			}
 		}
 	}
-	private double[] updateind(double[] list, int ind, int t){
-		for (int i = ind; i < list.length&&i<ind+8; i++) {
+	private double[] updateind(double[] list, int ind, double t){
+		for (int i = ind+1; i < list.length&&i<ind+factorials.length; i++) {
+			
 			list[ind]+=(1/factorials[i-ind])*pow(t,i-ind)*list[i];
 		}
 		return list;

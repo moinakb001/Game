@@ -4,6 +4,7 @@ import java.nio.ByteBuffer;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 
+import BaseClass.Entity;
 import BaseClass.Timer;
 import Exceptions.NotStartedException;
 
@@ -19,7 +20,24 @@ public class Main {
 		// TODO Auto-generated method stub
 		Sys.openURL("google.com");
 		printarr(new int[][]{{1,2},{1}});
-		Timer time=new Timer();
+		Entity a=new Entity(new double[][]{{1,-2,9.81,-5,2,-10,1}},700);
+		Timer t=new Timer();
+		t.startTimer();
+		for (int i = 0; i < 20; i++) {
+			
+		
+		Thread.sleep(1000);
+		long time=t.getreset()/1000;
+		System.out.println(time);
+		a.update(time);
+		System.out.println(a.get(0)[0]+" "+a.get(0)[1]);
+		Thread.sleep(1000);
+		 time=t.getreset()/1000;
+		System.out.println(time);
+		a.update(time);
+		System.out.println(a.get(0)[0]+" "+a.get(0)[1]);
+		}
+		
 		
 		
 		
