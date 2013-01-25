@@ -1,3 +1,9 @@
+import java.net.URL;
+import java.nio.ByteBuffer;
+
+import org.lwjgl.Sys;
+import org.lwjgl.opengl.GL11;
+
 
 public class Main {
 
@@ -6,7 +12,8 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("hkjhg");
+		Sys.openURL("google.com");
+		
 	}
 
 }
